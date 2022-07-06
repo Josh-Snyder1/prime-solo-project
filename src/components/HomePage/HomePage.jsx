@@ -20,7 +20,7 @@ function HomePage(props) {
     <div>
         <div>
         <h2>{heading}</h2>
-
+        
         </div>
     </div>
   );

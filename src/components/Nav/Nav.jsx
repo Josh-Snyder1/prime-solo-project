@@ -5,8 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Paper from '@mui/material/Paper'
 import { Link } from 'react-router-dom';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
-// import './Nav.css';
+import './Nav.css';
 
 const options = [
   'My Profile',
@@ -62,11 +63,18 @@ export default function Nav() {
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-            {option}
+          <MenuItem>
+            <Link className='navLink' to='/myProfile' >My Profile</Link>
           </MenuItem>
-        ))}
+          <MenuItem>
+            <Link className='navLink' to='/info' >Info</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link className='navLink' to='/about' >About</Link>
+          </MenuItem>
+          <MenuItem>
+            <LogOutButton className="navLink" />
+          </MenuItem>
       </Menu>
       </div>
     </div>
