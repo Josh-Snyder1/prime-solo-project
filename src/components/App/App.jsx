@@ -14,6 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
+import HomePage from '../HomePage/HomePage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -37,7 +38,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/landingPage" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -52,6 +53,14 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/home"
+          >
+            <HomePage />
+          </ProtectedRoute>
+          
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -98,7 +107,7 @@ function App() {
 
           <Route
             exact
-            path="/home"
+            path="/landingPage" //changed this to landing page from /home
           >
             {user.id ?
               // If the user is already logged in, 
