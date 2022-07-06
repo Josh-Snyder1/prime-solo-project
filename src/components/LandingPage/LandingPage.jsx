@@ -52,6 +52,7 @@ function LandingPage() {
           </p>
         </div>
         <div className="grid-col grid-col_4">
+          <LoginForm />
           <RegisterForm />
 
           <center>
