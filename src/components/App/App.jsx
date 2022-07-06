@@ -39,8 +39,9 @@ function App() {
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/landingPage" />
+          <Redirect exact from="/login" to="/landingPage" />
 
-          {/* Visiting localhost:3000/about will show the about page. */}
+{/* Visiting localhost:3000/about will show the about page. */}
           <Route
             // shows AboutPage at all times (logged in or not)
             exact
@@ -49,6 +50,27 @@ function App() {
             <AboutPage />
           </Route>
 
+{/* Landing page for logging user in */}
+          <Route exact path="/landingPage">
+            {user.id ?
+              <Redirect to="/homePage" />
+              :
+              <LandingPage />
+            }
+          </Route>
+
+{/* Registration page for user registration */}
+          <Route exact path="/registration">
+            {user.id ?
+              <Redirect to="/homePage" />
+              :
+              <RegisterPage />
+            }
+          </Route>
+
+          <Route exact path="/homePage">
+            <HomePage />
+          </Route>
           
 
          
