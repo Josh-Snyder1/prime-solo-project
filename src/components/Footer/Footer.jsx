@@ -1,6 +1,7 @@
 import './Footer.css';
 
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -10,10 +11,15 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Paper from '@mui/material/Paper'
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import SearchIcon from '@mui/icons-material/Search';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import RowingOutlinedIcon from '@mui/icons-material/RowingOutlined';
 
+// multer image upload
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
+  const history = useHistory();
 
   return (
     <>
@@ -26,9 +32,9 @@ export default function SimpleBottomNavigation() {
               setValue(newValue);
             }}
           >
-            <BottomNavigationAction label="Collection" icon={<LibraryMusicIcon />}/>
-            <BottomNavigationAction label="Wishlist" icon={<FavoriteIcon />}/>
-            <BottomNavigationAction label="Browse" icon={<SearchIcon />} />
+            <BottomNavigationAction label="All Routes" onClick={history.push('/allRoutes')}  icon={<RowingOutlinedIcon />}/>
+            <BottomNavigationAction label="My Favorites" onClick={history.push('/myFavorites')} icon={<StarBorderOutlinedIcon />}/>
+            <BottomNavigationAction label="Add Route" onClick={history.push('/addRoute')} icon={<AddCircleIcon />} />
           </BottomNavigation>
         </Paper>
       </Box>
