@@ -19,7 +19,7 @@ import AllRoutes from '../AllRoutes/AllRoutes';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
+import LoginPage from '../LoginPage(notUsed)/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MyFavorites from '../MyFavorites/MyFavorites'
 import AddRoute from '../AddRoutePage/AddRoutePage'

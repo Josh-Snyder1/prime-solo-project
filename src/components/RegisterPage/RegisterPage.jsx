@@ -17,7 +17,18 @@ function RegisterPage() {
 
         </div>
         <div className="grid-col grid-col_4" >
-          <RegisterPage />
+          <RegisterForm />
+          <center>
+        <button
+          type="button"
+          className="btn btn_asLink"
+          onClick={() => {
+            history.push('/login');
+          }}
+        >
+          Login
+        </button>
+      </center>
         </div>
       </div>
     </div>

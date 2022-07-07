@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
+import ListItem from '../RouteViews/ListItem';
+import Map from '../Map/Map'
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
+
+
 function HomePage(props) {
-  // Using hooks we're creating local state for a "heading" variable with
-  // a default value of 'Functional Component'
-  const store = useSelector((store) => store);
+
+  const topRoutes = useSelector((store) => store.routes.topRoutesReducer);
   const dispatch = useDispatch(); 
-  const [heading, setHeading] = useState('Top Routes');
 
   useEffect(() => {
-    dispatch ({type: 'FETCH_ROUTES'});
+    dispatch ({type: 'FETCH_TOP_ROUTES'});
   }, []); 
 
   return (
     <div>
         <div>
-        <h2>{heading}</h2>
-        
+        <h2>Top Routes</h2>
+        {console.log('in top routes', topRoutes)}
+        <ListItem routes={topRoutes} />
+        </div>
+        <div>
+          <h2>Map View</h2>
+        </div>
+        <div>
+          <Map />
         </div>
     </div>
   );

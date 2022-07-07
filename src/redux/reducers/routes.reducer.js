@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 const routesReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_ROUTES':
@@ -7,4 +9,17 @@ const routesReducer = (state = [], action) => {
     }
 };
 
-export default routesReducer;
+const topRoutesReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_TOP_ROUTES':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
+
+export default combineReducers({
+    routesReducer,
+    topRoutesReducer,
+  });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import LoginPage from '../LoginPage/LoginPage';
+import LoginPage from '../LoginPage(notUsed)/LoginPage';
 import HomePage from '../HomePage/HomePage';
 import {useSelector} from 'react-redux';
 

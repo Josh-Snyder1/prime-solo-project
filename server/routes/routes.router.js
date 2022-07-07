@@ -16,4 +16,16 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/top', (req, res) => {
+    
+    const sqlQuery = `SELECT * from "routes" LIMIT 3;`
+
+    pool.query(sqlQuery).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('Error in getting top', error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;

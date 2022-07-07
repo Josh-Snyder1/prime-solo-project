@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 // import './LandingPage.css';
-import LoginPage from '../LoginPage/LoginPage'
+import LoginForm from '../LoginForm/LoginForm'
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -26,7 +26,18 @@ function LandingPage() {
 
         </div>
         <div className="grid-col grid-col_4" >
-          <LoginPage />
+          <LoginForm />
+          <center>
+        <button
+          type="button"
+          className="btn btn_asLink"
+          onClick={() => {
+            history.push('/registration');
+          }}
+        >
+          Register
+        </button>
+      </center>
         </div>
       </div>
     </div>

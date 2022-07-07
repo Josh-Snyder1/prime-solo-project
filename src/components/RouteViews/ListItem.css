@@ -1,0 +1,21 @@
+.list-item {
+    display: flexbox;
+}
+.list-detail{
+    padding: 10px;
+    margin: 0px
+}
+
+.fav-icon-list-view {
+    display: flex;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+h4 {
+    padding: 0px;
+    margin: 0px;
+}

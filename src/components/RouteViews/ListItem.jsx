@@ -1,0 +1,65 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+
+import {useSelector, useDispatch} from 'react-redux';
+
+import './ListItem.css';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+export default function ListItem({routes}) {
+    // const routes = useSelector((store) => store.routes);
+
+  return (
+    <Box sx={{ width: '95%', margin: 'auto' }}>
+      <Stack spacing={1}>
+        {routes.map(route => {
+            console.log('in listItem map', route.route_start);
+        return( 
+            <Item key={route.id} className='list-item' 
+                sx={{ border: 1 }}>
+                <div>
+                    <h4>{route.route_start} To {route.route_end}</h4>
+                </div>
+                <div className='detail-row'>
+                    <span className='list-detail'>
+                        {route.route_city_state}
+                    </span>
+                    <span className='list-detail'>
+                        {route.route_distance}mi
+                    </span>
+                    <span className='list-detail'>
+                        {route.route_time}hrs
+                    </span>
+                    <span className='list-detail'>
+                        {route.route_difficulty}
+                    </span>
+                <span className='fav-icon-list-view'>
+                {<StarBorderOutlinedIcon sx={{  }}/>}
+                </span>
+                </div>
+
+            </Item>     
+        )
+        })}
+      </Stack>
+    </Box>
+    );
+}
+
+// {route.route_start}{route.route_end}
+
+// {routes.map(route => {
+//     console.log('in listItem map', route.route_start);
+// <Item>test</Item>     
+// })}
