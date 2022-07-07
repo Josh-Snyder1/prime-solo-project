@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
-import ListRoutes from '../ListRoutes/ListRoutes';
+
 
 
 function ListRoutes(props) {
@@ -17,8 +17,7 @@ function ListRoutes(props) {
   return (
     <div>
         <div>
-        <h2>All Routes</h2>
-        {store.routes}
+        {/* <p>{store.routes}</p> */}
         </div>
     </div>
   );

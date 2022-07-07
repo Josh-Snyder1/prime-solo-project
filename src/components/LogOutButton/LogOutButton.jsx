@@ -7,6 +7,7 @@ function LogOutButton(props) {
   const history = useHistory();
 
   function logout() {
+    console.log('in logout')
     dispatch({ type: 'LOGOUT' })
     history.push('/landingPage')
   };

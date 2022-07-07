@@ -14,12 +14,15 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import HomePage from '../HomePage/HomePage'
+import HomePage from '../HomePage/HomePage';
+import AllRoutes from '../AllRoutes/AllRoutes';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import MyFavorites from '../MyFavorites/MyFavorites'
+import AddRoute from '../AddRoutePage/AddRoutePage'
 
 import './App.css';
 
@@ -71,8 +74,17 @@ function App() {
           <Route exact path="/homePage">
             <HomePage />
           </Route>
-          
+          <Route exact path="/allRoutes">
+            <AllRoutes />
+          </Route>
 
+          <ProtectedRoute exact path="/myFavorites">
+            <MyFavorites />
+          </ProtectedRoute>
+          
+          <ProtectedRoute exact path="/addRoute">
+            <AddRoute />
+          </ProtectedRoute>            
          
 
           {/* If none of the other routes matched, we will show a 404. */}

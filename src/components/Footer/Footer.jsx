@@ -14,12 +14,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import RowingOutlinedIcon from '@mui/icons-material/RowingOutlined';
+import { useDispatch, useSelector } from 'react-redux';
 
 // multer image upload
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
   const history = useHistory();
+  const user = useSelector(store => store.user);
 
   return (
     <>
@@ -32,9 +34,9 @@ export default function SimpleBottomNavigation() {
               setValue(newValue);
             }}
           >
-            <BottomNavigationAction label="All Routes" onClick={history.push('/allRoutes')}  icon={<RowingOutlinedIcon />}/>
-            <BottomNavigationAction label="My Favorites" onClick={history.push('/myFavorites')} icon={<StarBorderOutlinedIcon />}/>
-            <BottomNavigationAction label="Add Route" onClick={history.push('/addRoute')} icon={<AddCircleIcon />} />
+            <BottomNavigationAction label="All Routes" onClick={() => {history.push('/allRoutes')}}  icon={<RowingOutlinedIcon />}/>
+            <BottomNavigationAction label="My Favorites" onClick={() => {history.push('/myFavorites')}} icon={<StarBorderOutlinedIcon />}/>
+            <BottomNavigationAction label="Add Route" onClick={() => {history.push('/addRoute')}} icon={<AddCircleIcon />} />
           </BottomNavigation>
         </Paper>
       </Box>
