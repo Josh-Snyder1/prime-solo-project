@@ -18,8 +18,18 @@ const topRoutesReducer = (state = [], action) => {
     }
 };
 
+const routeDetailsReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_ROUTE_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 
 export default combineReducers({
     routesReducer,
     topRoutesReducer,
+    routeDetailsReducer,
   });

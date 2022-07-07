@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 
 import {useSelector, useDispatch} from 'react-redux';
+import { HashRouter as Router, Route, Link, useHistory } from "react-router-dom";
 
 import './ListItem.css';
 
@@ -20,6 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ListItem({routes}) {
     // const routes = useSelector((store) => store.routes);
 
+    const history = useHistory();
+
   return (
     <Box sx={{ width: '95%', margin: 'auto' }}>
       <Stack spacing={1}>
@@ -27,7 +30,9 @@ export default function ListItem({routes}) {
             console.log('in listItem map', route.route_start);
         return( 
             <Item key={route.id} className='list-item' 
-                sx={{ border: 1 }}>
+                sx={{ border: 1 }}
+                onClick={() => history.push(`/routeDetails/${route.id}`)}    
+            >
                 <div>
                     <h4>{route.route_start} To {route.route_end}</h4>
                 </div>

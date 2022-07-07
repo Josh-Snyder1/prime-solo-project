@@ -24,6 +24,10 @@ function* fetchTopRoutes() {
 function* fetchRouteDetails(req) {
     try {
         const res = yield axios.get(`/api/routes/${req.payload}`)
+        yield put ({ type: 'SET_ROUTE_DETAIL', payload: req.params})
+    }
+    catch (err) {
+        console.error('error in get route details',err)
     }
 }
 

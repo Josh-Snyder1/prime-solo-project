@@ -28,4 +28,19 @@ router.get('/top', (req, res) => {
     })
 })
 
+router.get('/:id', (req, res) => {
+    
+    const sqlQuery = `SELECT * from "routes" 
+                    WHERE "id" = $1;`
+    const sqlParams = [req.params.id]
+
+    pool.query(sqlQuery, sqlParams).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('Error in getting details', error);
+        res.sendStatus(500);
+    })
+})
+
+
 module.exports = router;
