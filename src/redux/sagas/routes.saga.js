@@ -21,9 +21,16 @@ function* fetchTopRoutes() {
     }
 }
 
+function* fetchRouteDetails(req) {
+    try {
+        const res = yield axios.get(`/api/routes/${req.payload}`)
+    }
+}
+
 function* routesSaga() {
     yield takeLatest('FETCH_ROUTES', fetchRoutes);
     yield takeLatest('FETCH_TOP_ROUTES', fetchTopRoutes)
+    yield takeLatest('FETCH_ROUTE_DETAILS', fetchRouteDetails)
 }
 
 export default routesSaga;
