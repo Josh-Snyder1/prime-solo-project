@@ -1,15 +1,12 @@
+import './Map.css'
 import React, { useRef, useEffect, useState } from 'react';
-import { Marker } from 'react-map-gl';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+// import { Marker } from 'react-map-gl';
 import track_points from "./track_points.json";
 import rumRiver from "./rumRiver.json";
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-// const converter = require("@tmcw/togeojson")
-// import fs from 'fs'
-// // import * as fs from 'fs';
-// const DOMParser = require("xmldom").DOMParser
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaC1zbnlkZXIxIiwiYSI6ImNsNTY2ZnU0aDFkanEzZXMwMmx3aDJweXEifQ.R4SJFu_XEoz-FNJilIswYQ';
 
-import './Map.css'
 
 export default function Map() {
 
