@@ -6,6 +6,8 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 
+import Comments from './Comments';
+import CommentInput from './CommentInput';
 import './RouteDetail.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter as Router, Route, Link, useHistory, useParams } from "react-router-dom";
@@ -37,7 +39,6 @@ export default function RouteDetail() {
 
 console.log('in routeDetail', routeDetail)
 
-
   return (
     routeDetail.length > 0 &&
     <>
@@ -65,10 +66,18 @@ console.log('in routeDetail', routeDetail)
                 {<StarBorderOutlinedIcon sx={{  }}/>}
                 </span>
                 </div>
-            </Item>     
+            </Item> 
       </Stack>
     </Box>
-    <img src="./mapPlaceholder" alt='mapView'/>
+    <div className='mapDiv'>
+    {/* <Map/> */}
+    </div>
+    <div className='comments-section'>
+
+    <Comments />
+    <CommentInput />
+
+    </div>
     </>
     );
 }

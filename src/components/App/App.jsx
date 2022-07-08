@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useEffect } from 'react';
 import {
   HashRouter as Router,
@@ -25,7 +26,7 @@ import MyFavorites from '../MyFavorites/MyFavorites'
 import AddRoute from '../AddRoutePage/AddRoutePage'
 import RouteDetail from '../RouteDetail/RouteDetail'
 
-import './App.css';
+
 
 function App() {
   const dispatch = useDispatch();

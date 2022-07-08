@@ -1,3 +1,8 @@
 body{
     padding-top: 48px;
 }
+
+#new-comment-input {
+    height: 50px;
+    width: 300px;
+}
