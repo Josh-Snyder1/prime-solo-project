@@ -31,7 +31,7 @@ export default function ListItem({routes}) {
         return( 
             <Item key={route.id} className='list-item' 
                 sx={{ border: 1 }}
-                onClick={() => history.push(`/routeDetails/${route.id}`)}    
+                onClick={() => history.push(`/routeDetail/${route.id}`)}    
             >
                 <div>
                     <h4>{route.route_start} To {route.route_end}</h4>

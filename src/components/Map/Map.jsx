@@ -11,7 +11,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaC1zbnlkZXIxIiwiYSI6ImNsNTY2ZnU0aDFkanEzZ
 
 import './Map.css'
 
-export default function App() {
+export default function Map() {
 
   
   const mapContainer = useRef(null);

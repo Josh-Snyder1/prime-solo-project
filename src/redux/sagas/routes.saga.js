@@ -21,10 +21,11 @@ function* fetchTopRoutes() {
     }
 }
 
-function* fetchRouteDetails(req) {
+function* fetchRouteDetail(req) {
     try {
         const res = yield axios.get(`/api/routes/${req.payload}`)
-        yield put ({ type: 'SET_ROUTE_DETAIL', payload: req.params})
+        console.log('in fetchroutedetails saga', res)
+        yield put ({ type: 'SET_ROUTE_DETAIL', payload: res.data})
     }
     catch (err) {
         console.error('error in get route details',err)
@@ -34,7 +35,7 @@ function* fetchRouteDetails(req) {
 function* routesSaga() {
     yield takeLatest('FETCH_ROUTES', fetchRoutes);
     yield takeLatest('FETCH_TOP_ROUTES', fetchTopRoutes)
-    yield takeLatest('FETCH_ROUTE_DETAILS', fetchRouteDetails)
+    yield takeLatest('FETCH_ROUTE_DETAIL', fetchRouteDetail)
 }
 
 export default routesSaga;

@@ -23,6 +23,7 @@ import LoginPage from '../LoginPage(notUsed)/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MyFavorites from '../MyFavorites/MyFavorites'
 import AddRoute from '../AddRoutePage/AddRoutePage'
+import RouteDetail from '../RouteDetail/RouteDetail'
 
 import './App.css';
 
@@ -76,6 +77,9 @@ function App() {
           </Route>
           <Route exact path="/allRoutes">
             <AllRoutes />
+          </Route>
+          <Route exact path="/routeDetail/:id">
+            <RouteDetail />
           </Route>
 
           <ProtectedRoute exact path="/myFavorites">

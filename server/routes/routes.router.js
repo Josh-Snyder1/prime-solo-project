@@ -31,10 +31,12 @@ router.get('/top', (req, res) => {
 router.get('/:id', (req, res) => {
     
     const sqlQuery = `SELECT * from "routes" 
-                    WHERE "id" = $1;`
+                    WHERE "routes"."id" = $1;`
     const sqlParams = [req.params.id]
-
+    console.log('params are', sqlParams)
+    
     pool.query(sqlQuery, sqlParams).then((result) => {
+        console.log('in routes router get id', result.rows);
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error in getting details', error);
