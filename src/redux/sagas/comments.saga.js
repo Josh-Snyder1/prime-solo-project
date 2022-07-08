@@ -14,8 +14,9 @@ function* fetchComments() {
 
 function* postComment(req) {
     try {
-        yield axios.post('/api/comments', req.body);
-        yield put ({ type: 'FETCH_COMMENTS', payload: res.data})
+        console.log('in postComment saga', req.payload)
+        yield axios.post('/api/comments', req.payload);
+        yield put ({ type: 'FETCH_COMMENTS'})
     }
     catch (err) {
         console.error('error is', err)

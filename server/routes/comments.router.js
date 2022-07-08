@@ -15,5 +15,26 @@ router.get('/', (req, res) => {
     })
 });
 
+router.post('/', (req,res) => {
+    
+    const sqlQuery = `INSERT INTO "comments"
+                        ("routeId", "userId", "comment")
+                        VALUES ($1, $2, $3);`;
+    const SqlParams = [
+        req.body.routeId,
+        req.user.id,
+        req.body.newComment
+    ];
+    console.log('in comments router post', req.body)
+    pool.query(sqlQuery,SqlParams)
+        .then(dbRes => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
+            console.error(err);
+            res.sendStatus(500);
+        });
+});
+
 
 module.exports = router;

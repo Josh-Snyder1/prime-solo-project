@@ -27,27 +27,27 @@ export default function ListItem({routes}) {
     <Box sx={{ width: '95%', margin: 'auto' }}>
       <Stack spacing={1}>
         {routes.map(route => {
-            console.log('in listItem map', route.route_start);
+            console.log('in listItem map', route.startPoint);
         return( 
             <Item key={route.id} className='list-item' 
                 sx={{ border: 1 }}
                 onClick={() => history.push(`/routeDetail/${route.id}`)}    
             >
                 <div>
-                    <h4>{route.route_start} To {route.route_end}</h4>
+                    <h4>{route.startPoint} To {route.endPoint}</h4>
                 </div>
                 <div className='detail-row'>
                     <span className='list-detail'>
-                        {route.route_city_state}
+                        {route.cityState}
                     </span>
                     <span className='list-detail'>
-                        {route.route_distance}mi
+                        {route.distance}mi
                     </span>
                     <span className='list-detail'>
-                        {route.route_time}hrs
+                        {route.time}hrs
                     </span>
                     <span className='list-detail'>
-                        {route.route_difficulty}
+                        {route.difficulty}
                     </span>
                 <span className='fav-icon-list-view'>
                 {<StarBorderOutlinedIcon sx={{  }}/>}

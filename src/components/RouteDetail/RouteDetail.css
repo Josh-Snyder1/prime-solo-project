@@ -6,3 +6,19 @@ body{
     height: 50px;
     width: 300px;
 }
+
+.comments-section {
+    display: flexbox;
+    margin-bottom: 50px;
+    padding-bottom: 100px;
+}
+
+.mapPlaceholder {
+    width: 380px;
+    display: flex;
+}
+
+.mapDiv {
+    display: flex;
+    justify-content: center;
+}
