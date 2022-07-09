@@ -3,11 +3,24 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
+    console.log('in route.get for comments', req.params)
+    const sqlQuery = `SELECT
+                        comments.id AS "comment_id",
+                        comments."routeId",
+                        comments."userId",
+                        comments."comment",
+                        comments."timeDate",
+                        "user".username
+                    FROM "comments"
+                    JOIN "user" 
+                        ON "comments"."userId" = "user"."id"
+                        WHERE "routeId" = $1;`
+    const sqlParams = [req.params.id]
+                    
+                
 
-    const sqlQuery = `SELECT * from "comments"`
-
-    pool.query(sqlQuery).then((result) => {
+    pool.query(sqlQuery, sqlParams).then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error in get', error);
@@ -35,6 +48,25 @@ router.post('/', (req,res) => {
             res.sendStatus(500);
         });
 });
+
+router.put('/update/:id', (req,res) => {
+
+    const sqlQuery = `UPDATE "comments"
+                        SET "comment" = $2
+                        WHERE id = $1`
+    const sqlParams = [req.params.id, req.body.updatedComment]
+
+    console.log('in comments router put', sqlParams)
+
+    pool.query(sqlQuery, sqlParams)
+        .then(dbRes => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
+            console.error(err);
+            res.sendStatus(500);
+        })
+})
 
 
 module.exports = router;
