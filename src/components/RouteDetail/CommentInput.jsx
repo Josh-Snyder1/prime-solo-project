@@ -18,6 +18,7 @@ function CommentInput({route}) {
             }
         })
         document.getElementById('new-comment-input').value = '';
+        dispatch ({type: 'FETCH_COMMENTS', payload: route.id});
     }
 
   const store = useSelector((store) => store);

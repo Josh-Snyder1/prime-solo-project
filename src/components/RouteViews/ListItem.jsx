@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import StarIcon from '@mui/icons-material/Star';
 
 import {useSelector, useDispatch} from 'react-redux';
 import { HashRouter as Router, Route, Link, useHistory } from "react-router-dom";
@@ -18,6 +19,11 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+function addToFavorites(id) {
+    console.log('in addToFavorites')
+    
+}
+
 export default function ListItem({routes}) {
     // const routes = useSelector((store) => store.routes);
 
@@ -31,10 +37,12 @@ export default function ListItem({routes}) {
         return( 
             <Item key={route.id} className='list-item' 
                 sx={{ border: 1 }}
-                onClick={() => history.push(`/routeDetail/${route.id}`)}    
+                    
             >
                 <div>
-                    <h4>{route.startPoint} To {route.endPoint}</h4>
+                    <h4
+                    onClick={() => history.push(`/routeDetail/${route.id}`)}
+                    >{route.startPoint} To {route.endPoint}</h4>
                 </div>
                 <div className='detail-row'>
                     <span className='list-detail'>
@@ -50,7 +58,8 @@ export default function ListItem({routes}) {
                         {route.difficulty}
                     </span>
                 <span className='fav-icon-list-view'>
-                {<StarBorderOutlinedIcon sx={{  }}/>}
+                <StarIcon sx={{ }}
+                onClick={() => {addToFavorites(route.id)}}/>
                 </span>
                 </div>
 

@@ -38,9 +38,21 @@ export default function Comments({route}) {
     const comments = useSelector((store) => store.comments.commentsReducer);
     const user = useSelector((store) => store.user)
 
-    const [commentView, setCommentView] = useState(true);
-    const toggleEditComment = () => {
-        setCommentView(!commentView)
+    //sets state for comment to toggle between view and edit
+    const [commentView, setCommentView] = useState(0);
+    //if edit icon pressed, sets commentView to commentId
+    //allowing conditional rendering below to display edit text box
+    const toggleEditComment = (id) => {
+        console.log('in toggleEditComment', id)
+        if (commentView === id) {
+            //if edit button has already been pressed for this comment
+            //reset state to 0
+            setCommentView(0)
+        }
+        else {
+            setCommentView(id)
+        }
+        
     }
 
     const [updatedComment, setUpdatedComment] = useState('');
@@ -61,7 +73,14 @@ export default function Comments({route}) {
                 updatedComment
             }
         })
-        // toggleEditComment();
+        toggleEditComment();
+        dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
+    }
+
+    function deleteComment(id) {
+        dispatch({ type: 'DELETE_COMMENT', payload: id})
+        toggleEditComment();
+        dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
     }
 
   return (
@@ -76,7 +95,7 @@ export default function Comments({route}) {
             }
             action={
                 user.id === comment.userId &&
-            <IconButton aria-label="settings" onClick={toggleEditComment}>
+            <IconButton aria-label="settings" onClick={() => {toggleEditComment(comment.comment_id)}}>
                 <EditIcon />
             </IconButton>
                 }
@@ -84,7 +103,7 @@ export default function Comments({route}) {
             subheader={comment.timeDate}
         />
         <CardContent>
-            {commentView ?
+            {commentView != comment.comment_id ?
             <Typography variant="body2" color="text.secondary">
             {comment.comment}
             </Typography>
@@ -99,8 +118,11 @@ export default function Comments({route}) {
                 />
                 <br/>
                 <button 
-                onClick={updateComment(comment.comment_id)} 
+                onClick={() => {updateComment(comment.comment_id)}} 
                 >Update</button>
+                <button
+                onClick={() => {deleteComment(comment.comment_id)}}
+                >Delete</button>
                 {/* </form> */}
             </Typography>
             }
