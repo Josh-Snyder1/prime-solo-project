@@ -36,15 +36,12 @@ export default function ListItem({routes}) {
 
     function toggleFavorites(routeId) {
         console.log('in toggleFavorites')
-        switch (routeId) {
-            case 
+        if (favorites.indexOf(routeId) >= 0){
+            dispatch({type: 'DELETE_FAVORITE', routeId})
         }
-        dispatch({
-            type: 'ADD_FAVORITE',
-            payload: {
-                routeId
-            }
-        })
+        else {
+            dispatch({ type: 'ADD_FAVORITE', routeId })
+        }
     }
     console.log('in ListItem favorites are', favorites)
   return (
@@ -91,7 +88,6 @@ export default function ListItem({routes}) {
                         <StarIcon 
                             onClick={() => {toggleFavorites(route.id)}}
                         />
-                    
                 }
                 </span>
                 </div>

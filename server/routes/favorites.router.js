@@ -20,33 +20,38 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('/', (req,res) => {
+router.post('/:id', (req,res) => {
     
     const sqlQuery = `INSERT INTO "favorites"
                         ("routeId", "userId")
                         VALUES ($1, $2);`;
     const SqlParams = [
-        req.body.routeId,
+        req.params.id,
         req.user.id
     ];
-    console.log('in favorites router post', req.body)
+    console.log('in favorites router post', req.params.id)
     pool.query(sqlQuery,SqlParams)
         .then(dbRes => {
             res.sendStatus(201);
         })
         .catch(err => {
-            // if (err.detail === `Key ("routeId", "userId")=
-            // (${req.body.routeId}, ${req.user.id}) already exists.`) {
-            //     const sqlQuery = `DELETE FROM "favorites"
-            //                 WHERE "userId" = $1 AND "routeId" = $2;`;
-            //     const sqlParams = [req.body.routeId, req.user.id]
-
-            //     pool.query(sqlQuery, sqlParams)
-            //     .then(() => {
-            //         res.sendStatus(201)
-            //     })
-            // }
             console.error(err);
+            res.sendStatus(500);
+        });
+});
+
+router.delete('/:id', (req,res) => {
+
+    const sqlQuery = `DELETE FROM "favorites"
+                    WHERE "favorites"."routeId" = $1 AND "favorites"."userId" = $2;`;
+    const sqlParams = [req.params.id, req.user.id];
+    console.log('in router.delete', sqlParams)
+    pool.query(sqlQuery,sqlParams)
+        .then(dbRes => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
+            console.error('error in router.delete', err);
             res.sendStatus(500);
         });
 });

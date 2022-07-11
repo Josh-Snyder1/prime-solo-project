@@ -15,8 +15,8 @@ function* fetchFavorites() {
 
 function* addFavorite(req) {
     try {
-        console.log('in postFavorite saga', req.payload)
-        yield axios.post('/api/favorites', req.payload);
+        console.log('in postFavorite saga', req.routeId)
+        yield axios.post(`/api/favorites/${req.routeId}`);
         yield put ({ type: 'FETCH_FAVORITES'})
     }
     catch (err) {
@@ -24,11 +24,23 @@ function* addFavorite(req) {
     };
 };
 
+function* deleteFavorite(req) {
+    try {
+        console.log('in deleteFavorite', req);
+        yield axios.delete(`api/favorites/${req.routeId}`);
+        yield put ({ type: 'FETCH_FAVORITES'})
+    }
+    catch (err) {
+        console.error('error in deleteFavorites saga', err)
+    }
+}
+
 
 
 function* favoritesSaga() {
     yield takeLatest('FETCH_FAVORITES', fetchFavorites);
     yield takeLatest('ADD_FAVORITE', addFavorite);
+    yield takeLatest('DELETE_FAVORITE', deleteFavorite);
 }
 
 export default favoritesSaga;
