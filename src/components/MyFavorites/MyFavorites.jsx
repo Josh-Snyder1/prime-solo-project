@@ -13,6 +13,7 @@ function MyFavorites() {
     dispatch ({type: 'FETCH_FAVORITES'});
     console.log('in useEffect fetch')
   }, []); 
+  
 console.log('in MyFavorites', favorites)
   return (
     <div>

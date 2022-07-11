@@ -35,7 +35,17 @@ router.post('/', (req,res) => {
             res.sendStatus(201);
         })
         .catch(err => {
-            if (err)
+            // if (err.detail === `Key ("routeId", "userId")=
+            // (${req.body.routeId}, ${req.user.id}) already exists.`) {
+            //     const sqlQuery = `DELETE FROM "favorites"
+            //                 WHERE "userId" = $1 AND "routeId" = $2;`;
+            //     const sqlParams = [req.body.routeId, req.user.id]
+
+            //     pool.query(sqlQuery, sqlParams)
+            //     .then(() => {
+            //         res.sendStatus(201)
+            //     })
+            // }
             console.error(err);
             res.sendStatus(500);
         });

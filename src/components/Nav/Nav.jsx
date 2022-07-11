@@ -27,6 +27,7 @@ export default function Nav() {
   const user = useSelector(store => store.user);
 
   const handleClick = (event) => {
+    console.log('in handleClick')
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -38,7 +39,7 @@ export default function Nav() {
     <div>
       
     <Link to="/homePage">
-      <h2 className="nav-title">Canoe MN</h2>
+      <h2 className="nav-title">Canoe</h2>
     </Link>
 
       <div>

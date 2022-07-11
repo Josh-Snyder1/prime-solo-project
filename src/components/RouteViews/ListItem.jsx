@@ -24,18 +24,23 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ListItem({routes}) {
     // const routes = useSelector((store) => store.routes);
 
+    useEffect(() => {
+        dispatch ({type: 'FETCH_FAVORITES'});
+      }, []);
+
     const history = useHistory();
     const dispatch = useDispatch();
+    const favorites = useSelector((store) => store.favorites.favoritesReducer.map(route => {}));
+    const user = useSelector((store) => store.user)
 
-    function addToFavorites(routeId) {
-        console.log('in addToFavorites')
+    function toggleFavorites(routeId) {
+        console.log('in toggleFavorites')
         dispatch({
             type: 'ADD_FAVORITE',
             payload: {
                 routeId
             }
         })
-    
     }
 
   return (
@@ -46,7 +51,6 @@ export default function ListItem({routes}) {
         return( 
             <Item key={route.id} className='list-item' 
                 sx={{ border: 1 }}
-                    
             >
                 <div>
                     <h4 className='route-header-clickable'
@@ -67,8 +71,13 @@ export default function ListItem({routes}) {
                         {route.difficulty}
                     </span>
                 <span className='fav-icon-list-view'>
-                <StarIcon sx={{ }}
-                onClick={() => {addToFavorites(route.id)}}/>
+                {user.id &&
+                <StarIcon 
+                // {favorites.map(route => route.indexOf(route.routeId)) &&
+                // sx={{ color: 'yellow' }}
+                // }
+                onClick={() => {toggleFavorites(route.id)}}/>
+            }
                 </span>
                 </div>
 

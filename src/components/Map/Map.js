@@ -190,7 +190,9 @@ export default function Map() {
                 return {
                     'id': {i},
                   'type': 'Feature',
-                  'properties': {},
+                  'properties': {
+                    'description': "canoe route"
+                  },
                   'geometry': {
                   'type': 'LineString',
                   'coordinates': parseCoordinates(route)
@@ -225,10 +227,10 @@ export default function Map() {
             while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }
-             
+
             new mapboxgl.Popup()
-            .setLngLat(coordinates)
-            .setHTML(description)
+            .setLngLat([lng,lat])
+            .setHTML('hello')
             .addTo(map);
             });
              

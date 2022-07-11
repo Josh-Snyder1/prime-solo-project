@@ -5,6 +5,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/:id', (req, res) => {
     console.log('in route.get for comments', req.params)
+    
     const sqlQuery = `SELECT
                         comments.id AS "comment_id",
                         comments."routeId",

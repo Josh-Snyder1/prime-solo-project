@@ -35,6 +35,7 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    dispatch ({type: 'FETCH_FAVORITES'});
   }, [dispatch]);
 
   return (
@@ -43,7 +44,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/landingPage" />
+          <Redirect exact from="/" to="/homePage" />
           <Redirect exact from="/login" to="/landingPage" />
 
 {/* Visiting localhost:3000/about will show the about page. */}
