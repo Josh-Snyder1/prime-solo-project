@@ -7,6 +7,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import StarIcon from '@mui/icons-material/Star';
 
 import {useSelector, useDispatch} from 'react-redux';
+import { useEffect } from 'react';
 import { HashRouter as Router, Route, Link, useHistory } from "react-router-dom";
 
 import './ListItem.css';
@@ -30,11 +31,14 @@ export default function ListItem({routes}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const favorites = useSelector((store) => store.favorites.favoritesReducer.map(route => {}));
+    const favorites = useSelector((store) => store.favorites.favoritesReducer.map(route => {return route.id}));
     const user = useSelector((store) => store.user)
 
     function toggleFavorites(routeId) {
         console.log('in toggleFavorites')
+        switch (routeId) {
+            case 
+        }
         dispatch({
             type: 'ADD_FAVORITE',
             payload: {
@@ -42,7 +46,7 @@ export default function ListItem({routes}) {
             }
         })
     }
-
+    console.log('in ListItem favorites are', favorites)
   return (
     <Box sx={{ width: '95%', margin: 'auto' }}>
       <Stack spacing={1}>
@@ -71,19 +75,31 @@ export default function ListItem({routes}) {
                         {route.difficulty}
                     </span>
                 <span className='fav-icon-list-view'>
-                {user.id &&
-                <StarIcon 
-                // {favorites.map(route => route.indexOf(route.routeId)) &&
-                // sx={{ color: 'yellow' }}
-                // }
-                onClick={() => {toggleFavorites(route.id)}}/>
-            }
+
+                {!user.id ? 
+                    //return nothing if user not logged in
+                    <></>
+                    :
+                    (favorites.indexOf(route.id) >= 0) ?
+                    //return yellow star icon if user has route in favorites list
+                        <StarIcon 
+                            sx={{color: 'yellow' }}
+                            onClick={() => {toggleFavorites(route.id)}}
+                        />
+                        :
+                        //return plain star icon if user did  not favorite route
+                        <StarIcon 
+                            onClick={() => {toggleFavorites(route.id)}}
+                        />
+                    
+                }
                 </span>
                 </div>
 
-            </Item>     
+            </Item>    
         )
-        })}
+    })
+        }
       </Stack>
     </Box>
     );
