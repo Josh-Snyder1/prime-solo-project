@@ -38,6 +38,11 @@ export default function Comments({route}) {
     const comments = useSelector((store) => store.comments.commentsReducer);
     const user = useSelector((store) => store.user)
 
+    useEffect(() => {
+        console.log('in comments useEffect', routeId)
+      dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
+    }, []); 
+
     //sets state for comment to toggle between view and edit
     const [commentView, setCommentView] = useState(0);
     //if edit icon pressed, sets commentView to commentId
@@ -57,11 +62,6 @@ export default function Comments({route}) {
 
     const [updatedComment, setUpdatedComment] = useState('');
     const routeId = useParams().id
-  
-    useEffect(() => {
-        console.log('in comments useEffect', routeId)
-      dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
-    }, []); 
 
     function updateComment(id) {
         // evt.preventDefault()
@@ -73,14 +73,15 @@ export default function Comments({route}) {
                 updatedComment
             }
         })
-        toggleEditComment();
-        dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
+        toggleEditComment(id);
+        // dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
     }
 
     function deleteComment(id) {
+        console.log('in delete comment', id)
         dispatch({ type: 'DELETE_COMMENT', payload: id})
         toggleEditComment();
-        dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
+        // dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
     }
 
   return (
@@ -90,7 +91,7 @@ export default function Comments({route}) {
         <CardHeader
             avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                R
+                {comment.username.charAt(0).toUpperCase()}
             </Avatar>
             }
             action={

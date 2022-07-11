@@ -30,15 +30,14 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req,res) => {
     
-    const sqlQuery = `INSERT INTO "comments"
-                        ("routeId", "userId", "comment")
-                        VALUES ($1, $2, $3);`;
+    const sqlQuery = `INSERT INTO "favorites"
+                        ("routeId", "userId")
+                        VALUES ($1, $2);`;
     const SqlParams = [
         req.body.routeId,
-        req.user.id,
-        req.body.newComment
+        req.user.id
     ];
-    console.log('in comments router post', req.body)
+    console.log('in favorites router post', req.body)
     pool.query(sqlQuery,SqlParams)
         .then(dbRes => {
             res.sendStatus(201);

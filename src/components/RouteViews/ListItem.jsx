@@ -19,15 +19,24 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function addToFavorites(id) {
-    console.log('in addToFavorites')
-    
-}
+
 
 export default function ListItem({routes}) {
     // const routes = useSelector((store) => store.routes);
 
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    function addToFavorites(routeId) {
+        console.log('in addToFavorites')
+        dispatch({
+            type: 'ADD_FAVORITE',
+            payload: {
+                routeId
+            }
+        })
+    
+    }
 
   return (
     <Box sx={{ width: '95%', margin: 'auto' }}>
@@ -40,7 +49,7 @@ export default function ListItem({routes}) {
                     
             >
                 <div>
-                    <h4
+                    <h4 className='route-header-clickable'
                     onClick={() => history.push(`/routeDetail/${route.id}`)}
                     >{route.startPoint} To {route.endPoint}</h4>
                 </div>

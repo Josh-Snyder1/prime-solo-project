@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
+import ListItem from '../RouteViews/ListItem';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
-function HomePage(props) {
-  // Using hooks we're creating local state for a "heading" variable with
-  // a default value of 'Functional Component'
+function MyFavorites({routes}) {
+
   const store = useSelector((store) => store);
   const dispatch = useDispatch(); 
-  const [heading, setHeading] = useState('Top Routes');
+  
 
   useEffect(() => {
-    dispatch ({type: 'FETCH_ROUTES'});
+    dispatch ({type: 'FETCH_FAVORITES'});
   }, []); 
 
   return (
     <div>
         <div>
         <h2>Favorite Routes</h2>
-        
+        <ListItem routes={routes} />
         </div>
     </div>
   );
 }
 
-export default HomePage;
+export default MyFavorites;

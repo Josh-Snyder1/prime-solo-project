@@ -68,5 +68,23 @@ router.put('/update/:id', (req,res) => {
         })
 })
 
+router.delete('/delete/:id', (req,res) => {
+
+    const sqlQuery = `DELETE FROM "comments"
+                    WHERE id = $1`
+    const sqlParams = [req.params.id]
+
+    console.log('in delete comment router', sqlParams);
+
+    pool.query(sqlQuery, sqlParams)
+        .then(() => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
+            console.error(err);
+            res.sendStatus(500);
+        })
+})
+
 
 module.exports = router;

@@ -1,18 +1,26 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* fetchFavorites() {
-
+function* fetchFavorites(req) {
+    try {
+        console.log('in fetch favorites', req.payload)
+        const res = yield axios.get(`/api/favorites/${req.payload}`);
+        console.log('in fetchFavorites try', res)
+        yield put ({ type: 'SET_FAVORITES', payload: res.data})
+    }
+    catch (err) {
+        console.error('error in fetchFavorites', err)
+    };
 };
 
-function* addFavorite() {
+function* addFavorite(req) {
     try {
         console.log('in postFavorite saga', req.payload)
-        yield axios.post('/api/favorite', req.payload);
+        yield axios.post('/api/favorites', req.payload);
         yield put ({ type: 'FETCH_FAVORITES'})
     }
     catch (err) {
-        console.error('error in addFavorite is', err)
+        console.error('error in addFavorite saga is', err)
     };
 };
 

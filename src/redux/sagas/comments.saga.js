@@ -36,10 +36,22 @@ function* updateComment(req) {
     };
 };
 
+function* deleteComment(req) {
+    try {
+        console.log('in deleteComment saga', req.payload);
+        yield axios.delete(`/api/comments/delete/${req.payload}`)
+        yield put ({ type: 'DELETE_COMMENT'})
+    }
+    catch (err) {
+        console.error('error in delete', err)
+    };
+}
+
 function* commentsSaga() {
     yield takeLatest('FETCH_COMMENTS', fetchComments);
     yield takeLatest('POST_COMMENT', postComment);
     yield takeLatest('UPDATE_COMMENT', updateComment);
+    yield takeLatest('DELETE_COMMENT', deleteComment);
 }
 
 export default commentsSaga;

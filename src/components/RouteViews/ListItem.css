@@ -19,3 +19,7 @@ h4 {
     padding: 0px;
     margin: 0px;
 }
+
+.route-header-clickable {
+    cursor: pointer;
+}
