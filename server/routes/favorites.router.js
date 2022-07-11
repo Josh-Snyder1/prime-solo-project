@@ -3,27 +3,19 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
     console.log('in route.get for comments', req.params)
-    const sqlQuery = `SELECT
-                        comments.id AS "comment_id",
-                        comments."routeId",
-                        comments."userId",
-                        comments."comment",
-                        comments."timeDate",
-                        "user".username
-                    FROM "comments"
-                    JOIN "user" 
-                        ON "comments"."userId" = "user"."id"
-                        WHERE "routeId" = $1;`
-    const sqlParams = [req.params.id]
+    const sqlQuery = `SELECT *
+                    FROM "favorites"
+                    JOIN "routes" 
+                        ON "favorites"."routeId" = "routes"."id"
+                        WHERE "userId" = $1;`
+    const sqlParams = [req.user.id]
                     
-                
-
     pool.query(sqlQuery, sqlParams).then((result) => {
         res.send(result.rows);
     }).catch((error) => {
-        console.log('Error in get', error);
+        console.log('Error in get favorites', error);
         res.sendStatus(500);
     })
 });

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* fetchFavorites(req) {
+function* fetchFavorites() {
     try {
-        console.log('in fetch favorites', req.payload)
-        const res = yield axios.get(`/api/favorites/${req.payload}`);
+        console.log('in fetch favorites')
+        const res = yield axios.get(`/api/favorites`);
         console.log('in fetchFavorites try', res)
         yield put ({ type: 'SET_FAVORITES', payload: res.data})
     }

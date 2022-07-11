@@ -8,7 +8,7 @@ import ListItem from '../RouteViews/ListItem';
 
 
 
-function AllRoutes(props) {
+function AllRoutes() {
 
   const routes = useSelector((store) => store.routes.routesReducer);
   const dispatch = useDispatch(); 
