@@ -18,7 +18,7 @@ function* postComment(req) {
     try {
         console.log('in postComment saga', req.payload)
         yield axios.post('/api/comments', req.payload);
-        yield put ({ type: 'FETCH_COMMENTS'})
+        yield put ({ type: 'FETCH_COMMENTS', payload: req.payload.routeId})
     }
     catch (err) {
         console.error('error is', err)
@@ -29,7 +29,7 @@ function* updateComment(req) {
     try {
         console.log('in updateComment saga', req.payload);
         yield axios.put(`/api/comments/update/${req.payload.id}`, req.payload)
-        yield put ({ type: 'UPDATE_COMMENTS'})
+        yield put ({ type: 'FETCH_COMMENTS', payload: req.payload.routeId})
     }
     catch (err) {
         console.error('error in put', err)
@@ -39,8 +39,8 @@ function* updateComment(req) {
 function* deleteComment(req) {
     try {
         console.log('in deleteComment saga', req.payload);
-        yield axios.delete(`/api/comments/delete/${req.payload}`)
-        yield put ({ type: 'DELETE_COMMENT'})
+        yield axios.delete(`/api/comments/delete/${req.payload.id}`)
+        yield put ({ type: 'FETCH_COMMENTS', payload: req.payload.routeId})
     }
     catch (err) {
         console.error('error in delete', err)

@@ -41,7 +41,7 @@ export default function Comments({route}) {
     useEffect(() => {
         console.log('in comments useEffect', routeId)
       dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
-    }, []); 
+    }, []);
 
     //sets state for comment to toggle between view and edit
     const [commentView, setCommentView] = useState(0);
@@ -70,7 +70,8 @@ export default function Comments({route}) {
             type: 'UPDATE_COMMENT',
             payload: {
                 id: id,
-                updatedComment
+                updatedComment,
+                routeId
             }
         })
         toggleEditComment(id);
@@ -79,7 +80,13 @@ export default function Comments({route}) {
 
     function deleteComment(id) {
         console.log('in delete comment', id)
-        dispatch({ type: 'DELETE_COMMENT', payload: id})
+        dispatch({ 
+            type: 'DELETE_COMMENT', 
+            payload: {
+                id,
+                routeId
+            }
+        })
         toggleEditComment();
         // dispatch ({type: 'FETCH_COMMENTS', payload: routeId});
     }

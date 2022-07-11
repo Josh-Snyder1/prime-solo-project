@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper'
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import './Nav.css';
 
@@ -50,7 +51,7 @@ export default function Nav() {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MenuIcon />
       </IconButton>
       <Menu
         id="long-menu"
