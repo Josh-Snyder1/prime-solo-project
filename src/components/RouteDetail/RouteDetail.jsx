@@ -82,3 +82,4 @@ console.log('in routeDetail', routeDetail)
     </>
     );
 }
+

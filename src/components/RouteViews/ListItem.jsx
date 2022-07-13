@@ -77,7 +77,7 @@ export default function ListItem({routes}) {
                     //return nothing if user not logged in
                     <></>
                     :
-                    (favorites.indexOf(route.id) >= 0) ?
+                    favorites.indexOf(route.id) >= 0 ?
                     //return yellow star icon if user has route in favorites list
                         <StarIcon 
                             sx={{color: 'yellow' }}

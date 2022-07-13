@@ -1,6 +1,6 @@
 import './Map.css'
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl';
 // import { Marker } from 'react-map-gl';
 import track_points from "./track_points.json";
 import rumRiver from "./rumRiver.json";
@@ -77,19 +77,6 @@ export default function Map() {
       // https://www.youtube.com/watch?v=JJatzkPcmoI
 
       const routeCoordinates = [];
-
-      // useEffect(() => {
-      //   //maps through the given route 'track_points'
-      //   //to pull out coordinate information
-      //   if (!map.current) return; // wait for map to initialize
-      //   track_points.features.map((item, i) => {
-      //     // console.log('in routeCoordinates', i)
-      //     //adds coordinates to final aray to display on map
-      //     routeCoordinates.push(item.geometry.coordinates)
-      //   })
-      //   // console.log('testing route import', track_points.features[0].geometry.coordinates);
-      //   // console.log('testing route import', routeCoordinates);
-      // });
 
       const routes = [rumRiver,track_points]
       let routeCoordinatesTest = [];
@@ -191,7 +178,7 @@ export default function Map() {
                     'id': {i},
                   'type': 'Feature',
                   'properties': {
-                    'description': "canoe route"
+                    'description': route.name
                   },
                   'geometry': {
                   'type': 'LineString',
@@ -216,9 +203,10 @@ export default function Map() {
           'line-width': 8
           }
           });//end map.current.addLayer
+          
           map.current.on('click', 'routes', (e) => {
             // Copy coordinates array.
-            const coordinates = e.features[0].geometry.coordinates.slice();
+            const coordinates = e.features[0].geometry.coordinates[0].slice();
             const description = e.features[0].properties.description;
              
             // Ensure that if the map is zoomed out such that multiple
@@ -227,11 +215,11 @@ export default function Map() {
             while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }
-
             new mapboxgl.Popup()
-            .setLngLat([lng,lat])
-            .setHTML('hello')
-            .addTo(map);
+            .setLngLat(e.lngLat)
+            .setHTML(description)
+            .addTo(map.current);
+            console.log('2. in on click', coordinates)
             });
              
             // Change the cursor to a pointer when the mouse is over the places layer.
@@ -287,10 +275,6 @@ export default function Map() {
 
       // When a click event occurs on a feature in the places layer, open a popup at the
 // location of the feature, with description HTML from its properties.
-
-
-
-
 
       return (
           <div>
