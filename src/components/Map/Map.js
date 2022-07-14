@@ -1,5 +1,6 @@
 import './Map.css'
 import React, { useRef, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'; 
 import mapboxgl from '!mapbox-gl';
 // import { Marker } from 'react-map-gl';
 import track_points from "./track_points.json";
@@ -8,15 +9,30 @@ import rumRiver from "./rumRiver.json";
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaC1zbnlkZXIxIiwiYSI6ImNsNTY2ZnU0aDFkanEzZXMwMmx3aDJweXEifQ.R4SJFu_XEoz-FNJilIswYQ';
 
 
-export default function Map() {
+export default function Map(lgn,lats) {
 
-  
+  const dispatch = useDispatch(); 
+  const routes = useSelector((store) => store.routes.routesReducer);
+
   const mapContainer = useRef(null);
   const map = useRef(null);
+
+  let longitude;
+  let latitude;
+
+  if ( latitude === '' ) {
+    longitude = lgn;
+    latitude = lats;
+  }
+  else {
+    longitude = -93.21
+    latitude = 45.05;
+  }
+
   //sets initial coordinates to show view of greater
   //twin cites area where most of the routes will be generated
-  const [lng, setLng] = useState(-93.21);
-  const [lat, setLat] = useState(45.05);
+  const [lng, setLng] = useState(longitude);
+  const [lat, setLat] = useState(latitude);
   const [zoom, setZoom] = useState(8);
   
   //44.952254678652544, -93.2048053417367
@@ -76,23 +92,25 @@ export default function Map() {
       //video on adding markers to map
       // https://www.youtube.com/watch?v=JJatzkPcmoI
 
-      const routeCoordinates = [];
+      // const routeCoordinates = [];
 
-      const routes = [rumRiver,track_points]
-      let routeCoordinatesTest = [];
-      
-      function parseCoordinates(jsonFile) {
-        routeCoordinatesTest = [];
+      // // const routes = [rumRiver,track_points]
+   
+
+      function parseCoordinates(geojson) {
+        let routeCoordinatesTest = [];
+        // routeCoordinatesTest = [];
         //initialize an empty array for the return array of coordinates
         // let routeCoordinatesTest = [];
         //maps through the given route 'track_points'
         //to pull out coordinate information
-        console.log('in parseCoordinates jsonFile', jsonFile)
-        jsonFile.features.map((item, i) => {
-          // console.log('in routeCoordinates', i)
+        // console.log('in parseCoordinates jsonFile', geojson.features[0].geometry.coordinates)
+        geojson.features[0].geometry.coordinates.map((route, i) => {
+          // console.log('in routeCoordinates', route)
           //adds coordinates to final aray to display on map
-          routeCoordinatesTest.push(item.geometry.coordinates)
+          routeCoordinatesTest.push(route)
         })
+          // console.log('at end of parse', routeCoordinatesTest)
           return routeCoordinatesTest;
         // console.log('testing route import', track_points.features[0].geometry.coordinates);
         // console.log('testing route import', routeCoordinates);
@@ -166,7 +184,9 @@ export default function Map() {
       // })//end use effect
 
 /////////*******THIS ONE SHOULD MAP THROUGH FOR MULTIPLE FEATURES */
-      useEffect(() => {
+ 
+    useEffect(() => {
+      routes.length > 0 &&
         map.current.on('load', () => {
           map.current.addSource(`routes`, {
           'type': 'geojson',
@@ -174,18 +194,20 @@ export default function Map() {
           'type': 'FeatureCollection',
           'features': 
               routes.map((route, i) => {
+                console.log('in routes.map', route.id)
                 return {
-                    'id': {i},
+                    'id': route.id,
                   'type': 'Feature',
                   'properties': {
-                    'description': route.name
+                    'description': route.startPoint + ' To ' + route.endPoint
                   },
                   'geometry': {
                   'type': 'LineString',
-                  'coordinates': parseCoordinates(route)
-                  }
+                  'coordinates': parseCoordinates(route.geoJson)
+                  },
                   }
               })//end routes.map
+              
           //end features
           }//end addSource
         })//end add source
@@ -200,7 +222,7 @@ export default function Map() {
           },
           'paint': {
           'line-color': '#888',
-          'line-width': 8
+          'line-width': 5
           }
           });//end map.current.addLayer
           
