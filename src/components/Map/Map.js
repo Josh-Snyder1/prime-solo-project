@@ -25,7 +25,7 @@ export default function Map({coordinates}) {
     coordinates.latitude = 45.05;
   }
 
-  console.log('in map',coordinates)
+  // console.log('in map',coordinates)
   //sets initial coordinates to show view of greater
   //twin cites area where most of the routes will be generated
   const [lng, setLng] = useState(coordinates.longitude);
@@ -49,8 +49,8 @@ export default function Map({coordinates}) {
   useEffect(() => {
       if (!map.current) return; // wait for map to initialize
       map.current.on('move', () => {
-        setLng(map.current.getCenter().lng.toFixed(4));
-        setLat(map.current.getCenter().lat.toFixed(4));
+        setLng(map.current.getCenter().lng.toFixed(2));
+        setLat(map.current.getCenter().lat.toFixed(2));
         setZoom(map.current.getZoom().toFixed(2));
       });
     }); 
