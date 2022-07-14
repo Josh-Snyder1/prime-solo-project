@@ -9,7 +9,7 @@ import rumRiver from "./rumRiver.json";
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaC1zbnlkZXIxIiwiYSI6ImNsNTY2ZnU0aDFkanEzZXMwMmx3aDJweXEifQ.R4SJFu_XEoz-FNJilIswYQ';
 
 
-export default function Map(lgn,lats) {
+export default function Map({coordinates}) {
 
   const dispatch = useDispatch(); 
   const routes = useSelector((store) => store.routes.routesReducer);
@@ -17,23 +17,20 @@ export default function Map(lgn,lats) {
   const mapContainer = useRef(null);
   const map = useRef(null);
 
-  let longitude;
-  let latitude;
-
-  if ( latitude === '' ) {
-    longitude = lgn;
-    latitude = lats;
-  }
-  else {
-    longitude = -93.21
-    latitude = 45.05;
+  // let longitude;
+  // let latitude;
+  
+  if ( Object.keys(coordinates).length === 0 ) {
+    coordinates.longitude = -93.21
+    coordinates.latitude = 45.05;
   }
 
+  console.log('in map',coordinates)
   //sets initial coordinates to show view of greater
   //twin cites area where most of the routes will be generated
-  const [lng, setLng] = useState(longitude);
-  const [lat, setLat] = useState(latitude);
-  const [zoom, setZoom] = useState(8);
+  const [lng, setLng] = useState(coordinates.longitude);
+  const [lat, setLat] = useState(coordinates.latitude);
+  const [zoom, setZoom] = useState(coordinates.zoom);
   
   //44.952254678652544, -93.2048053417367
 
@@ -302,7 +299,7 @@ export default function Map(lgn,lats) {
           <div>
             {/* displays bar on top left to show coordinates */}
             <div className="sidebar">
-              Longitude: {lng} | Latitude: {lat} | {/*Zoom: {zoom} */}
+              Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
 
             <div ref={mapContainer} className="map-container">
             </div>

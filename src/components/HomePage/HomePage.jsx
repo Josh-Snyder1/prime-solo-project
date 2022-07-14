@@ -15,6 +15,12 @@ function HomePage(props) {
     dispatch ({type: 'FETCH_TOP_ROUTES'});
   }, []); 
 
+  const coordinates = {
+    longitude: -93.21,
+    latitude: 45.05,
+    zoom: 8
+  }
+
   return (
     <div>
         <div>
@@ -26,7 +32,7 @@ function HomePage(props) {
           <h2>Map View</h2>
         </div>
         <div>
-          <Map />
+          <Map coordinates={coordinates}/>
         </div>
     </div>
   );
