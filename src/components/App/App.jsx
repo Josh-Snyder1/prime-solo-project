@@ -22,9 +22,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage(notUsed)/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import MyFavorites from '../MyFavorites/MyFavorites'
-import AddRoute from '../AddRoutePage/AddRoutePage'
-import RouteDetail from '../RouteDetail/RouteDetail'
+import MyFavorites from '../MyFavorites/MyFavorites';
+import AddRoute from '../AddRoutePage/AddRoutePage';
+import RouteDetail from '../RouteDetail/RouteDetail';
 
 
 
@@ -52,7 +52,7 @@ function App() {
           <Route
             // shows AboutPage at all times (logged in or not)
             exact
-            path="/about"
+            path="/aboutPage"
           >
             <AboutPage />
           </Route>
@@ -83,6 +83,9 @@ function App() {
           </Route>
           <Route exact path="/routeDetail/:id">
             <RouteDetail />
+          </Route>
+          <Route exact path="/infoPage">
+            <InfoPage />
           </Route>
 
           <ProtectedRoute exact path="/myFavorites">

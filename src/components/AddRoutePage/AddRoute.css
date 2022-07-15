@@ -1,0 +1,13 @@
+.addRouteForm {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
+}
+
+/* .addRouteInput {
+    display:flex;
+    justify-content: center;
+} */

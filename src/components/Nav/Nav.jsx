@@ -76,11 +76,11 @@ export default function Nav() {
           }
           {user.id &&
           <MenuItem>
-            <Link className='navLink' to='/info' >Info</Link>
+            <Link className='navLink' to='/infoPage' >Info</Link>
           </MenuItem>
           }
           <MenuItem>
-            <Link className='navLink' to='/about' >About</Link>
+            <Link className='navLink' to='/aboutPage' >About</Link>
           </MenuItem>
           <MenuItem>
             {user.id ?

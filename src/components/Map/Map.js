@@ -2,6 +2,7 @@ import './Map.css'
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'; 
 import mapboxgl from '!mapbox-gl';
+import { Link } from 'react-router-dom';
 // import { Marker } from 'react-map-gl';
 import track_points from "./track_points.json";
 import rumRiver from "./rumRiver.json";
@@ -227,6 +228,7 @@ export default function Map({coordinates}) {
             // Copy coordinates array.
             const coordinates = e.features[0].geometry.coordinates[0].slice();
             const description = e.features[0].properties.description;
+            const routeId = e.features[0].id;
              
             // Ensure that if the map is zoomed out such that multiple
             // copies of the feature are visible, the popup appears
@@ -236,7 +238,14 @@ export default function Map({coordinates}) {
             }
             new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(description)
+            .setHTML(description
+                +'</br>'
+                +"<a href=/routeDetail/"
+                +routeId
+                +'>'
+                +"Route Details"
+                +'</Link>'
+              )
             .addTo(map.current);
             console.log('2. in on click', coordinates)
             });
