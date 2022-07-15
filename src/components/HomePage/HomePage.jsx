@@ -24,12 +24,12 @@ function HomePage(props) {
   return (
     <div>
         <div>
-        <h2>Top Routes</h2>
+        <h2 className='pageHeader' >Top Routes</h2>
         {console.log('in top routes', topRoutes)}
         <ListItem routes={topRoutes} />
         </div>
         <div>
-          <h2>Map View</h2>
+          <h2 className='pageHeader' >Map View</h2>
         </div>
         <div>
           <Map coordinates={coordinates}/>

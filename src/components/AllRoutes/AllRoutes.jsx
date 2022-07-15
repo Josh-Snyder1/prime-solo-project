@@ -20,8 +20,7 @@ function AllRoutes() {
   return (
     <div>
         <div>
-        <h2>All Routes</h2>
-        List View | Gallery View
+        <h2 className='pageHeader'>All Routes</h2>
           <ListItem key={routes.id} routes={routes}/>
         </div>
     </div>

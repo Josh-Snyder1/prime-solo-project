@@ -21,6 +21,10 @@
   margin: 0;
 } */
 
+.nav-title {
+  justify-content: center;
+}
+
 .navLink {
   display: inline-block;
   color: black;

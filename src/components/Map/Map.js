@@ -51,8 +51,8 @@ export default function Map({coordinates}) {
       if (!map.current) return; // wait for map to initialize
       map.current.on('move', () => {
         setLng(map.current.getCenter().lng.toFixed(2));
-        setLat(map.current.getCenter().lat.toFixed(2));
-        setZoom(map.current.getZoom().toFixed(2));
+        setLat(map.current.getCenter().lat.toFixed(1));
+        setZoom(map.current.getZoom().toFixed(0));
       });
     }); 
 
@@ -219,7 +219,7 @@ export default function Map({coordinates}) {
           'line-cap': 'round'
           },
           'paint': {
-          'line-color': '#888',
+          'line-color': '#3A50B2',
           'line-width': 5
           }
           });//end map.current.addLayer
@@ -232,7 +232,7 @@ export default function Map({coordinates}) {
              
             // Ensure that if the map is zoomed out such that multiple
             // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
+            // over the copy bedding pointed to.
             while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }
@@ -240,7 +240,7 @@ export default function Map({coordinates}) {
             .setLngLat(e.lngLat)
             .setHTML(description
                 +'</br>'
-                +"<a href=/routeDetail/"
+                +"<a href=/#/routeDetail/"
                 +routeId
                 +'>'
                 +"Route Details"

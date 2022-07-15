@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import StarIcon from '@mui/icons-material/Star';
 
 import Comments from './Comments';
 import CommentInput from './CommentInput';
@@ -27,6 +27,8 @@ export default function RouteDetail() {
     const routeId = useParams().id;
     const routeDetail = useSelector(store => store.routes.routeDetailReducer)
     const routes = useSelector(store => store.routesReducer)
+    const user = useSelector(store => store.user)
+    const favorites = useSelector((store) => store.favorites.favoritesReducer.map(route => {return route.id}));
 
     useEffect(() => {
         console.log('in useEffect RouteDetail',routeId);
@@ -36,6 +38,16 @@ export default function RouteDetail() {
             payload: routeId
         })
     },[routeId]);
+
+    function toggleFavorites(routeId) {
+        console.log('in toggleFavorites')
+        if (favorites.indexOf(routeId) >= 0){
+            dispatch({type: 'DELETE_FAVORITE', routeId})
+        }
+        else {
+            dispatch({ type: 'ADD_FAVORITE', routeId })
+        }
+    }
 
 // console.log('in routeDetail', routeDetail)
 
@@ -69,9 +81,22 @@ export default function RouteDetail() {
                     <span className='list-detail'>
                         {routeDetail[0].difficulty}
                     </span>
-                <span className='fav-icon-list-view'>
-                {<StarBorderOutlinedIcon sx={{  }}/>}
-                </span>
+                    {!user.id ? 
+                    //return nothing if user not logged in
+                    <></>
+                    :
+                    favorites.indexOf(routeDetail[0].id) >= 0 ?
+                    //return yellow star icon if user has route in favorites list
+                        <StarIcon 
+                            sx={{color: '#EFC752' }}
+                            onClick={() => {toggleFavorites(routeDetail[0].id)}}
+                        />
+                        :
+                        //return plain star icon if user did  not favorite route
+                        <StarIcon 
+                            onClick={() => {toggleFavorites(routeDetail[0].id)}}
+                        />
+                }
                 </div>
             </Item> 
       </Stack>
@@ -83,8 +108,16 @@ export default function RouteDetail() {
     zoom: routeDetail[0].viewZoom
   }}/>
     </div>
+    <div>
+        Start Point Info: Parking on street. Roughly 200ft pathway down hill to river requires portaging.
+        <br/><br/>
+        End Point Info: Parking lot offers room for truck&trailers. Road goes down to river where there is a boat launch.
+    </div>
+    <div>
+    <img src="https://i.imgur.com/0GXy2Sj.jpg" alt="hayRiver" width='300px'/>
+    </div>
     <div className='comments-section'>
-
+    
     <Comments route={routeDetail[0]}/>
     <CommentInput route={routeDetail[0]}/>
 

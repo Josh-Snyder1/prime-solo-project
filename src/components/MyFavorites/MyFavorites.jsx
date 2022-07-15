@@ -6,7 +6,7 @@ import ListItem from '../RouteViews/ListItem';
 function MyFavorites() {
 
   const favorites = useSelector((store) => store.favorites.favoritesReducer);
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   
 
   useEffect(() => {
@@ -18,7 +18,7 @@ console.log('in MyFavorites', favorites)
   return (
     <div>
         <div>
-        <h2>Favorite Routes</h2>
+        <h2 className='pageHeader'>Favorite Routes</h2>
         <ListItem routes={favorites} />
         </div>
     </div>

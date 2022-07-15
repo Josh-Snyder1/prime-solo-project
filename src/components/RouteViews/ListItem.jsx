@@ -51,7 +51,7 @@ export default function ListItem({routes}) {
             console.log('in listItem map', route.startPoint);
         return( 
             <Item key={route.id} className='list-item' 
-                sx={{ border: 1 }}
+                sx={{ border: 2 }}
             >
                 <div>
                     <h4 className='route-header-clickable'
@@ -80,12 +80,13 @@ export default function ListItem({routes}) {
                     favorites.indexOf(route.id) >= 0 ?
                     //return yellow star icon if user has route in favorites list
                         <StarIcon 
-                            sx={{color: 'yellow' }}
+                            sx={{color: '#EFC752' }}
                             onClick={() => {toggleFavorites(route.id)}}
                         />
                         :
                         //return plain star icon if user did  not favorite route
-                        <StarIcon 
+                        <StarIcon
+                            sx={{color: '#1E4959'}} 
                             onClick={() => {toggleFavorites(route.id)}}
                         />
                 }

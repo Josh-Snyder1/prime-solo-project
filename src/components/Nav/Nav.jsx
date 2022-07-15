@@ -39,7 +39,7 @@ export default function Nav() {
     <div>
       
     <Link to="/homePage">
-      <h2 className="nav-title">Canoe</h2>
+      <h2 className="nav-title">Canoe & Kayak MN</h2>
     </Link>
 
       <div>
@@ -86,7 +86,7 @@ export default function Nav() {
             {user.id ?
             <Link to='/landingPage'><LogOutButton className='navLink'/></Link>
             :
-            <Link className='navLink' to='/landingPage'>Login</Link> 
+            <Link className='navLink' to='/landingPage'>Login/Register</Link> 
             }
           </MenuItem>
       </Menu>

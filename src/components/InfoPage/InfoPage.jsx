@@ -12,12 +12,12 @@ function InfoPage() {
         <h1>Resources</h1>
         <p>St. Croix River</p>
         <ul>
-          <li>MN DNR Site Link</li>
+          <li><a href="https://www.nps.gov/sacn/index.htm">National Parks Service Site St. Croix</a></li>
           <li>Other Links</li>
         </ul>
         <p>Missisippi River</p>
         <ul>
-          <li>MN DNR Site Link</li>
+          <li><a href="https://www.nps.gov/miss/index.htm">National Parks Service Site Missisippi</a></li>
           <li>Other Links</li>
         </ul>
         <p>Thanks To</p>
