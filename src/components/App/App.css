@@ -118,3 +118,7 @@ input {
 .pageHeader {
   padding-left: 10px;
 }
+
+.bottomPageDiv {
+  padding-bottom: 150px;
+}

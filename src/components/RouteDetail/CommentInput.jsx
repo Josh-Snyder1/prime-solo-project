@@ -33,7 +33,7 @@ function CommentInput({route}) {
         onChange={((event) => setNewComment(event.target.value))}
     />
     <br/>
-    <button onClick={postComment} >Post</button>
+    <button className='button-13' onClick={postComment} >Post</button>
     </form>
   );
 }

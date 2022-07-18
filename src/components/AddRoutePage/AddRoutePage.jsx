@@ -44,16 +44,34 @@ const addRoute = (event) => {
         }
     })
 }
+
+    function fakeAdd() {
+        console.log('in fakeAdd');
+
+        setStartPoint=('Rice Creek North');
+        setStartCoordinates=('-93.04,45.30');
+        startInfo,
+        endPoint,
+        endCoordinates,
+        endInfo,
+        geoJSON,
+        distance,
+        time,
+        difficulty,
+        cityState,
+        parkingFee
+    }
     
     return(
         <>  
-        <h1> Add Route</h1>
+        <h1 onClick={fakeAdd}> Add Route</h1>
         <form className='addRouteForm' onSubmit={addRoute}>
             <span >
             <label>Start Point</label>
             <input className='addRouteInput'
             onChange={(event) => { setStartPoint(event.target.value)}}
             placeholder="Landing/Park"
+            defaultValue={startPoint}
             /> 
             </span>
             <br/>

@@ -25,6 +25,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import MyFavorites from '../MyFavorites/MyFavorites';
 import AddRoute from '../AddRoutePage/AddRoutePage';
 import RouteDetail from '../RouteDetail/RouteDetail';
+import MyProfile from '../MyProfile/MyProfile'
 
 
 
@@ -88,6 +89,10 @@ function App() {
             <InfoPage />
           </Route>
 
+          <ProtectedRoute exact path="/myProfile">
+            <MyProfile />
+          </ProtectedRoute>     
+
           <ProtectedRoute exact path="/myFavorites">
             <MyFavorites />
           </ProtectedRoute>
@@ -104,7 +109,9 @@ function App() {
         </Switch>
         <Footer />
       </div>
+      <div className='bottomPageDiv'></div>
     </Router>
+    
   );
 }
 
