@@ -5,20 +5,42 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function AddRoutePage(){
 
-    let [ description, setDescription] = useState('');
-    let [ image_url, setImage_url] = useState('');
+    let [ startPoint, setStartPoint ] = useState('');
+    let [ startCoordinates, setStartCoordinates ] = useState('');
+    let [ startInfo, setStartInfo ] = useState('');
+    let [ endPoint, setEndPoint ] = useState('');
+    let [ endCoordinates, setEndCoordinates ] = useState('');
+    let [ endInfo, setEndInfo ] = useState('');
+    let [ geoJSON, setGeoJSON ] = useState('');
+    let [ distance, setDistance ] = useState('');
+    let [ time, setTime ] = useState('');
+    let [ difficulty, setDifficulty ] = useState('');
+    let [ cityState, setCityState ] = useState('');
+    let [ parkingFee, setParkingFee ] = useState('');
+
+
     // const user = useSelector(store=> store.user);
     const dispatch = useDispatch(); 
 
 const addRoute = (event) => {
     event.preventDefault()
-    console.log('description, imgurl', description, image_url)
+    console.log('description, imgurl')
     dispatch({
-        type:'ADD_ITEM',
+        type:'ADD_ROUTE',
         // this payload has a user id already attached to it
         payload:{
-            description,
-            image_url,
+            startPoint,
+            startCoordinates,
+            startInfo,
+            endPoint,
+            endCoordinates,
+            endInfo,
+            geoJSON,
+            distance,
+            time,
+            difficulty,
+            cityState,
+            parkingFee
         }
     })
 }
@@ -30,92 +52,100 @@ const addRoute = (event) => {
             <span >
             <label>Start Point</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setStartPoint(event.target.value)}}
+            placeholder="Landing/Park"
             /> 
             </span>
             <br/>
             <span>
             <label>Start Coordinates</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setStartCoordinates(event.target.value)}}
+            placeholder="Long/Lat (-93.21,45.05)"
             />
             </span>
             <br/>
             <span>
             <label>Start Info</label>
-            <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            <textarea className='addRouteInput' className='infoInput'
+            onChange={(event) => { setStartInfo(event.target.value)}}
+            placeholder="Any Helpful Info"
             /> 
             </span>
             <br/>
             <span>
             <label>End Point</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setEndPoint(event.target.value)}}
+            placeholder="Landing/Park"
             /> 
             </span>
             <br/>
             <span>
             <label>End Coordinates</label>
-            <input 
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            <input className='addRouteInput'
+            onChange={(event) => { setEndCoordinates(event.target.value)}}
+            placeholder="Long/Lat (-93.21,45.05)"
             /> 
             </span>
             <br/>
             <span>
             <label>End Info</label>
-            <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            <textarea className='addRouteInput' className='infoInput'
+            onChange={(event) => { setEndInfo(event.target.value)}}
+            placeholder="Any Helpful Info"
+            /> 
+            </span>
+            <br/>
+            <span>
+            <label>geoJSON File</label>
+            <textarea className='addRouteInput' className='infoInput'
+            onChange={(event) => { setGeoJSON(event.target.value)}}
+            placeholder="geoJSON File"
             /> 
             </span>
             <br/>
             <span>
             <label>Distance</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setDistance(event.target.value)}}
+            placeholder="Miles"
             /> 
             </span>
             <br/>
             <span>
             <label>Time</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setTime(event.target.value)}}
+            placeholder="Hours"
             /> 
             </span>
             <br/>
             <span>
             <label>Difficulty</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setDifficulty(event.target.value)}}
+            placeholder="Easy/Moderate/Hard"
             /> 
             </span>
             <br/>
             <span>
             <label>City, State</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setCityState(event.target.value)}}
+            placeholder="City, State (Starting Location)"
             /> 
             </span>
             <br/>
             <span>
             <label>Parking Fee</label>
             <input className='addRouteInput'
-            onChange={(event) => { setDescription(event.target.value)}}
-            placeholder="Discription"
+            onChange={(event) => { setParkingFee(event.target.value)}}
+            placeholder="5"
             /> 
             </span>
             <br/>
-            <input type="submit"/>
+            <input onClick={addRoute} type="submit"/>
         </form>
         </>
     )

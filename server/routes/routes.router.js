@@ -42,6 +42,30 @@ router.get('/:id', (req, res) => {
         console.log('Error in getting details', error);
         res.sendStatus(500);
     })
+});
+
+router.post('/', (req, res) => {
+    console.log('in router postRoute', req.body)
+    const route = req.body;
+    const sqlQuery = `INSERT INTO "routes"
+                    ("createdBy", "geoJson", "startPoint",
+                    "startCoordinates", "startInfo", "endPoint",
+                    "endCoordinates", "endInfo", "time",
+                    "difficulty", "cityState", "parkingFee")
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
+    const sqlParams = [req.user.id, route.geoJSON, route.startPoint,
+                    route.startCoordinates, route.startInfo,
+                    route.endPoint, route.endCoordinates, route.endInfo,
+                    route.time, route.difficulty, route.cityState, route.parkingFee];
+
+    pool.query(sqlQuery, sqlParams)
+    .then(dbRes => {
+        res.sendStatus(201);
+    })
+    .catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
 })
 
 

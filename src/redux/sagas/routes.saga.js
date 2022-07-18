@@ -32,10 +32,21 @@ function* fetchRouteDetail(req) {
     }
 }
 
+function* addRoute(req) {
+    try {
+        console.log('in addRoute saga', req.payload)
+        yield axios.post('/api/routes', req.payload);
+    }
+    catch (err) {
+        console.error('error is', err)
+    };
+};
+
 function* routesSaga() {
     yield takeLatest('FETCH_ROUTES', fetchRoutes);
-    yield takeLatest('FETCH_TOP_ROUTES', fetchTopRoutes)
-    yield takeLatest('FETCH_ROUTE_DETAIL', fetchRouteDetail)
+    yield takeLatest('FETCH_TOP_ROUTES', fetchTopRoutes);
+    yield takeLatest('FETCH_ROUTE_DETAIL', fetchRouteDetail);
+    yield takeLatest('ADD_ROUTE', addRoute);
 }
 
 export default routesSaga;

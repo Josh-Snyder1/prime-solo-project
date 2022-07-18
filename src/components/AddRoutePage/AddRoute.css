@@ -4,10 +4,20 @@
     flex-direction: column;
     justify-content: space-around;
     align-content: space-around;
-    align-items: center;
+    align-items: flex-end;
 }
 
-/* .addRouteInput {
-    display:flex;
+.addRouteInput {
+    margin: 5px;
+    padding-right: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     justify-content: center;
-} */
+    width: 160px;
+}
+
+.infoInput {
+    /* height: 48px; */
+    margin: 5px;
+    padding-right: 5px;
+}
