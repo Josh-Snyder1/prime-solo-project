@@ -60,7 +60,7 @@ export default function RouteDetail() {
 
   return (
     routeDetail.length > 0 &&
-    <>
+    <div className='routeDetails'>
       <h2>Route Details</h2>
     <Box sx={{ width: '95%', margin: 'auto'}}>
       <Stack spacing={1}>
@@ -108,21 +108,21 @@ export default function RouteDetail() {
     zoom: routeDetail[0].viewZoom
   }}/>
     </div>
-    <div>
-        Start Point Info: Parking on street. Roughly 200ft pathway down hill to river requires portaging.
-        <br/><br/>
-        End Point Info: Parking lot offers room for truck&trailers. Road goes down to river where there is a boat launch.
+    <div className='routeInfo'>
+        <b>Start Point Info: </b> {routeDetail[0].startInfo}
+        <br/>
+        <b>End Point Info: </b> {routeDetail[0].endInfo}
     </div>
-    <div>
+    {/* <div className='routeImages'>
     <img src="https://i.imgur.com/0GXy2Sj.jpg" alt="hayRiver" width='300px'/>
-    </div>
-    <div className='comments-section'>
-    
+    </div> */}
+    <div className='commentSection'>
+    <h2>Comments</h2>
     <Comments route={routeDetail[0]}/>
     <CommentInput route={routeDetail[0]}/>
 
     </div>
-    </>
+    </div>
     );
 }
 

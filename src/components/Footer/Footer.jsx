@@ -26,7 +26,7 @@ export default function SimpleBottomNavigation() {
   return (
     <>
     <Box sx={{ width: 500 }}>
-        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+        <Paper sx={{ bgcolor: '#72A1A6',position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
           <BottomNavigation
             showLabels
             value={value}

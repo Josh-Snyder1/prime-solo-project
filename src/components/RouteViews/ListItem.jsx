@@ -51,7 +51,7 @@ export default function ListItem({routes}) {
             console.log('in listItem map', route.startPoint);
         return( 
             <Item key={route.id} className='list-item' 
-                sx={{ border: 2 }}
+                sx={{ border: 2, bgcolor: '#F2EDEB' }}
             >
                 <div>
                     <h4 className='route-header-clickable'

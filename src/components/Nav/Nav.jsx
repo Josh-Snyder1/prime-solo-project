@@ -35,8 +35,8 @@ export default function Nav() {
   };
 
   return (
-    <Paper sx={{ position: 'fixed', top: 0, left: 0, right: 0 }} elevation={3}>
-    <div>
+    <Paper className='nav' sx={{ bgcolor: '#2F4959', position: 'fixed', top: 0, left: 0, right: 0 }} elevation={3}>
+    <div className='nav'>
       
     <Link to="/homePage">
       <h2 className="nav-title">Canoe & Kayak MN</h2>
@@ -69,6 +69,9 @@ export default function Nav() {
           },
         }}
       >
+                  <MenuItem>
+            <Link className='navLink' to='/homePage' >Home</Link>
+          </MenuItem>
           {user.id &&
           <MenuItem>
             <Link className='navLink' to='/myProfile' >My Profile</Link>

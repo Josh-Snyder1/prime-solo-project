@@ -1,12 +1,14 @@
-.nav {
-  /* flex box layout */
+/* .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin: 0 0 30px;
-  background-color: #00acb0;
+  background-color: #1E4959;
   overflow: hidden;
+} */
+
+.nav {
+  background-image: './312449.svg';
 }
 
 .nav a {

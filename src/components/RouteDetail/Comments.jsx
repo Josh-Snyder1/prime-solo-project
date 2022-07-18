@@ -94,7 +94,7 @@ export default function Comments({route}) {
   return (
     comments.map(comment => {
         return(
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 360, bgcolor: '#F2EDEB' }} className='comment'>
         <CardHeader
             avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

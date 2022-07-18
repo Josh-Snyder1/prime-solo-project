@@ -25,9 +25,9 @@ function CommentInput({route}) {
   const [heading, setHeading] = useState('Functional Component');
 
   return (
-    <form className='comment-input'>
+    <form className='commentInput'>
     <textarea 
-        id='new-comment-input' 
+        id='newCommentInput' 
         type='text' 
         placeholder='Leave comment here'
         onChange={((event) => setNewComment(event.target.value))}

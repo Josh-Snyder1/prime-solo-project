@@ -14,18 +14,19 @@ function AboutPage() {
         <ul>
           <li>React</li>
           <li>Redux</li>
+          <li>Express</li>
+          <li>Node</li>
           <li>Mapbox API</li>
-          <li>React</li>
+          <li>Material UI (MUI)</li>
         </ul>
         <p>Challenges</p>
         <ul>
-          <li>React</li>
-          <li>Redux</li>
+          <li>Mapbox API</li>
+          <li>GPX/GEOJSON Files</li>
         </ul>
         <p>Thanks To</p>
         <ul>
-          <li>Me</li>
-          <li>Also Me</li>
+          <li>item</li>
         </ul>
       </div>
     </div>

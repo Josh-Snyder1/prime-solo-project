@@ -1,5 +1,6 @@
 .list-item {
     display: flexbox;
+    border: 2px #1E4959 solid;
 }
 .list-detail{
     padding: 10px;
