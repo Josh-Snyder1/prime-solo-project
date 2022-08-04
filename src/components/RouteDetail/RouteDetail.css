@@ -16,6 +16,12 @@ body{
     margin-top: 20px;
 }
 
+#new-comment-input {
+    height: 50px;
+    width: 300px;
+    margin-top: 20px;
+}
+
 .commentSection {
     margin-bottom: 50px;
     padding-bottom: 100px;
@@ -62,6 +68,7 @@ body{
     background-color: #F2EDEB;
     padding: 10px;
     border-radius: 8px;
+    margin-top: 15px;
 }
 
 /* CSS */

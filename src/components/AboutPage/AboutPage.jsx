@@ -14,6 +14,7 @@ function AboutPage() {
         <ul>
           <li>React</li>
           <li>Redux</li>
+          <li>React-Sagas</li>
           <li>Express</li>
           <li>Node</li>
           <li>Mapbox API</li>
@@ -24,9 +25,15 @@ function AboutPage() {
           <li>Mapbox API</li>
           <li>GPX/GEOJSON Files</li>
         </ul>
+        <p>Upcoming Features</p>
+        <ul>
+          <li>Events Page</li>
+          <li>Ability for users to upload images from trips</li>
+        </ul>
         <p>Thanks To</p>
         <ul>
-          <li>item</li>
+          <li>Gaiman Cohort</li>
+          <li>Prime Digital Academy</li>
         </ul>
       </div>
     </div>
