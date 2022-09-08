@@ -4,6 +4,7 @@ The goal of this app is to provide people who are interested in canoeing and kay
 ![Screen Shot 2022-09-08 at 10 45 11 AM](https://user-images.githubusercontent.com/65401752/189166655-d78a4841-ae5c-41e7-b211-d210a0d5e380.png)
 
 # Navigation of the home screen to route information
+Learning Mapbox API was a particularly challenging yet fun and satisfying feat. For months I had been recording canoe routes with a GPS which translated to tens of thousands of lines of GPS coodinates in a GPX file, those GPX files are parsed through to create a GeoJSON file that the app uses to plot each route, making an interactive map where routes can be clicked on to see more info.
 
 https://user-images.githubusercontent.com/65401752/189167015-17a6b22a-d822-42d2-9ebe-22f2f780e9b2.mov
 
