@@ -1,7 +1,11 @@
 # Canoe & Kayak MN
 The goal of this app is to provide people who are interested in canoeing and kayaking a way to find routes and information about those routes. Upon opening the app, users are greated with a list of the top three routes and a map of the twin cities showing routes highighted on the map. Users can select one of the route cards to view more detailed information or use the interactive map to click on a highlighted route and see the name of the route and navigate to route details.
 
-![Screen Shot 2022-09-08 at 10 41 49 AM](https://user-images.githubusercontent.com/65401752/189165885-0a22fdfe-5855-4990-a5e9-e50b6b755932.png)
+![Screen Shot 2022-09-08 at 10 45 11 AM](https://user-images.githubusercontent.com/65401752/189166655-d78a4841-ae5c-41e7-b211-d210a0d5e380.png)
+
+
+
+https://user-images.githubusercontent.com/65401752/189167015-17a6b22a-d822-42d2-9ebe-22f2f780e9b2.mov
 
 
 
