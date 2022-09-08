@@ -1,6 +1,14 @@
+# Canoe & Kayak MN
+The goal of this app is to provide people who are interested in canoeing and kayaking a way to find routes and information about those routes. Upon opening the app, users are greated with a list of the top three routes and a map of the twin cities showing routes highighted on the map. Users can select one of the route cards to view more detailed information or use the interactive map to click on a highlighted route and see the name of the route and navigate to route details.
+
+![Screen Shot 2022-09-08 at 10 41 49 AM](https://user-images.githubusercontent.com/65401752/189165885-0a22fdfe-5855-4990-a5e9-e50b6b755932.png)
+
+
+
 
 # Prime Solo Project Starting Repo
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+
 
 We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
 
