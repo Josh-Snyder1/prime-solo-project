@@ -11,9 +11,6 @@ function RegisterPage() {
 
       <div className="grid">
         <div className="grid-col grid-col_8">
-          <p>
-            Lorem ipsum
-          </p>
 
         </div>
         <div className="grid-col grid-col_4" >
