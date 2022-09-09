@@ -17,7 +17,7 @@ function CommentInput({route}) {
                 newComment
             }
         })
-        document.getElementById('new-comment-input').value = '';
+        document.getElementById('newCommentInput').value = '';
         dispatch ({type: 'FETCH_COMMENTS', payload: route.id});
     }
 

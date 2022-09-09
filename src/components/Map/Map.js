@@ -219,7 +219,7 @@ export default function Map({coordinates}) {
           'line-cap': 'round'
           },
           'paint': {
-          'line-color': '#3A50B2',
+          'line-color': '#007FFF',
           'line-width': 5
           }
           });//end map.current.addLayer

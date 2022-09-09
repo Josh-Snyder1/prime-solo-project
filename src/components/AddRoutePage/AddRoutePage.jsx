@@ -1,33 +1,34 @@
 import './AddRoute.css';
 import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'; 
+import { useHistory } from 'react-router-dom';
 
 
 function AddRoutePage(){
 
-    let [ startPoint, setStartPoint ] = useState('');
-    let [ startCoordinates, setStartCoordinates ] = useState('');
-    let [ startInfo, setStartInfo ] = useState('');
-    let [ endPoint, setEndPoint ] = useState('');
-    let [ endCoordinates, setEndCoordinates ] = useState('');
-    let [ endInfo, setEndInfo ] = useState('');
+    let [ startPoint, setStartPoint ] = useState('Rice Creek North');
+    let [ startCoordinates, setStartCoordinates ] = useState('-93.04,45.30');
+    let [ startInfo, setStartInfo ] = useState('No boat launch, put in on side of paved trail');
+    let [ endPoint, setEndPoint ] = useState('Rice Creek South Park');
+    let [ endCoordinates, setEndCoordinates ] = useState('-93.05,45.2');
+    let [ endInfo, setEndInfo ] = useState('End near trail head along 35W. requires short portage from trail to river');
     let [ geoJSON, setGeoJSON ] = useState('');
-    let [ distance, setDistance ] = useState('');
-    let [ time, setTime ] = useState('');
-    let [ difficulty, setDifficulty ] = useState('');
-    let [ cityState, setCityState ] = useState('');
-    let [ parkingFee, setParkingFee ] = useState('');
+    let [ distance, setDistance ] = useState('4');
+    let [ time, setTime ] = useState('3');
+    let [ difficulty, setDifficulty ] = useState('Easy');
+    let [ cityState, setCityState ] = useState('Lino Lakes, MN');
+    let [ parkingFee, setParkingFee ] = useState('0');
 
 
     // const user = useSelector(store=> store.user);
     const dispatch = useDispatch(); 
+    const history = useHistory();
 
 const addRoute = (event) => {
     event.preventDefault()
     console.log('description, imgurl')
     dispatch({
         type:'ADD_ROUTE',
-        // this payload has a user id already attached to it
         payload:{
             startPoint,
             startCoordinates,
@@ -43,10 +44,12 @@ const addRoute = (event) => {
             parkingFee
         }
     })
+    history.push('/homePage')
 }
 
     function fakeAdd() {
         console.log('in fakeAdd');
+        
 
         setStartPoint=('Rice Creek North');
         setStartCoordinates=('-93.04,45.30');
@@ -71,7 +74,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setStartPoint(event.target.value)}}
             placeholder="Landing/Park"
-            defaultValue={startPoint}
+            Value={startPoint}
             /> 
             </span>
             <br/>
@@ -80,6 +83,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setStartCoordinates(event.target.value)}}
             placeholder="Long/Lat (-93.21,45.05)"
+            Value={startCoordinates}
             />
             </span>
             <br/>
@@ -88,6 +92,7 @@ const addRoute = (event) => {
             <textarea className='addRouteInput' className='infoInput'
             onChange={(event) => { setStartInfo(event.target.value)}}
             placeholder="Any Helpful Info"
+            defaultValue={startInfo}
             /> 
             </span>
             <br/>
@@ -96,6 +101,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setEndPoint(event.target.value)}}
             placeholder="Landing/Park"
+            Value={endPoint}
             /> 
             </span>
             <br/>
@@ -104,6 +110,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setEndCoordinates(event.target.value)}}
             placeholder="Long/Lat (-93.21,45.05)"
+            Value={endCoordinates}
             /> 
             </span>
             <br/>
@@ -112,6 +119,7 @@ const addRoute = (event) => {
             <textarea className='addRouteInput' className='infoInput'
             onChange={(event) => { setEndInfo(event.target.value)}}
             placeholder="Any Helpful Info"
+            defaultValue={endInfo}
             /> 
             </span>
             <br/>
@@ -128,6 +136,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setDistance(event.target.value)}}
             placeholder="Miles"
+            Value={distance}
             /> 
             </span>
             <br/>
@@ -136,6 +145,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setTime(event.target.value)}}
             placeholder="Hours"
+            Value={time}
             /> 
             </span>
             <br/>
@@ -144,6 +154,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setDifficulty(event.target.value)}}
             placeholder="Easy/Moderate/Hard"
+            Value={difficulty}
             /> 
             </span>
             <br/>
@@ -152,6 +163,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setCityState(event.target.value)}}
             placeholder="City, State (Starting Location)"
+            Value={cityState}
             /> 
             </span>
             <br/>
@@ -160,6 +172,7 @@ const addRoute = (event) => {
             <input className='addRouteInput'
             onChange={(event) => { setParkingFee(event.target.value)}}
             placeholder="5"
+            Value={parkingFee}
             /> 
             </span>
             <br/>
